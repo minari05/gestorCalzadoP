@@ -1,0 +1,136 @@
+
+<!-- Modulo de Emp´leado -->
+<div class="container-fluid row d-flex justify-content-md-center" style="margin-top: 50px">
+    <h2 class="text-center">Gestión de  Empleado</h2>
+    <div id="divDetalle" class="row"   >
+        <div  class="mt-5 card col-lg-10 m-4 p-4 form-floating"  style="background-color: #F1F5DC">
+           
+           <div class="row ">
+               <!--centra el boton de cerra -->
+                <div  class="col-9">
+                
+            </div>
+               <!-- boton para cerrar el apartado de formalario -->
+            <div  class="col-3">
+                <button id="btnCerrarDetalle" class="btn btn-danger  m-2 col-5" onclick="moduloEmpleado.setDetalleVisible(false);"><i class="fa-solid fa-circle-xmark px-2"></i>Cerrar</button>
+            </div> 
+            </div>
+             <p class="p-2 ">
+
+           <i class="fa-solid fa-key p-2"></i>Formulario </p>
+            
+            <div class="row g-3" >
+               
+                
+               <div class="col-lg-4 form-floating">
+                <input id="txtIdEmpleado" type="text" readonly class="mt-2 form-control " style="display:none;">
+                <label for="txtIdEmpleado" class="mt-2 " style="display:none;">idEmpleado</label>
+            </div>
+                 <p class="p-2 "></i></p>
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtNombre"  class="mt-2 form-control" style="background-color: #EFF7CB" >
+                    <label for="txtNombre" class="mt-2 " >Nombre</label>
+                </div>
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtPrimerApellido" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label  for="txtPrimerApellido" class="mt-2 " >Primer Apellido</label>
+                </div>
+               
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtSegundoApellido" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtSegundoApellido" class="mt-2 ">Segundo Apellido<leg style="color:red" >*</leg></label>
+                </div>
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtMarca" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtMarca"  class="mt-2 ">RFC<leg style="color:red" >*</leg></label>
+                </div>
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtCURP" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtCURP"  class="mt-2">CURP<leg style="color:red" >*</leg></label>
+                </div>
+
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtFechaInicioTrabajo" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtFechaInicioTrabajo" class="mt-2 col-12">Fecha de inicio de trabajo<leg style="color:red" >*</leg></label><br>
+                </div>
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtNSS" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtNSS"  class="mt-2 "> NSS</label>
+                </div>
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtTipoSalario" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtTipoSalario"  class="mt-2 ">Tipo de salario<leg style="color:red" >*</leg></label>
+                </div>
+                <div class="col-lg-4 form-floating">
+
+                    <input id="txtPuesto" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtPuesto"  class="mt-2 ">Puesto<leg style="color:red" >*</leg></label>
+                </div>
+                 
+                 <div class="row justify-content-center">  
+                <div class="col-4 form-floating">
+
+                    <input id="txtDepartamento" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtDepartamento"  class="mt-2 ">Departamento<leg style="color:red" >*</leg></label>
+                </div>
+                <div class="col-4  form-floating">
+
+                    <input id="txtPrestaciones" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtPrestaciones"  class="mt-2 ">Prestaciones<leg style="color:red" >*</leg></label>
+                </div>
+                 </div>
+            <div class="d-flex justify-content-around mt-2">
+                <button class="mt-2 mx-1 btn btn-success btn-lg"  id="btnGuardar">Guardar</button>
+                <button class="mt-2 mx-1 btn btn-info btn-lg"  id="btnLimpiar">Limpiar</button>
+
+                <button class="mt-2 mx-1 btn btn-danger btn-lg disabled"  id="btnEliminar">Eliminar</button>
+                  <button class="btn btn-primary disabled m-2"  id="btnActivar">Activar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="divCatalogo" class="row">
+        <div class="mt-5 card col-lg-10 m-4 p-4  form-floating" style="margin-bottom: 10px; background-color: #F1F5DC">
+            <div class="row g-3">
+                <div class="col-lg-4 form-floating">
+
+                    <input type="text" id="txtBusquedaEmpleado" class="mx-3 form-control">
+                    <label for="txtBusquedaEmpleado" class="form-label mx-3">Buscar Empleado: </label>
+                   
+                </div>
+                <div class="col-lg-4 form-floating">
+                    <p class="p-2 "><i class="fa-solid fa-magnifying-glass p-2"></i></p>
+                </div>
+                <div class="col-lg-4 form-floating">
+                  
+                    <button class="btn btn-success  m-2" onclick="moduloEmpleado.setDetalleVisible(true);" id="btnNuevo"><i class="fa-solid fa-circle-plus px-2"></i>Agregar nuevo</button>
+                </div>
+            </div>
+            <table class="table table-hover mt-4" id="tblEmpleado">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="background-color: #87CEDE">Nombre</th>
+                        <th style="background-color: #87CEDE">Primer Apellido</th>
+                        <th style="background-color: #87CEDE">Segundo Apellido</th>
+                        <th style="background-color: #87CEDE">Puesto</th>
+                        <th style="background-color: #87CEDE">Departamento</th>
+                        <th style="background-color: #87CEDE">Prestaciones</th>
+                       
+                    </tr>
+                </thead>
+                <tbody id="tblEmpleados">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
