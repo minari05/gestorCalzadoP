@@ -3,8 +3,7 @@ package com.xyz.cp.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.xyz.cp.controlador.ControladorProducto;
-import com.xyz.cp.modelo.Producto;
+import com.xyz.cp.controlador.ControladorEmpleado;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
@@ -14,36 +13,38 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import com.xyz.cp.modelo.Empleado;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
- * @author ximer
+ * @author yazmi
  */
 
-@Path("producto")
-public class ProductoREST {
+@Path("empleado")
+public class EmpleadoREST {
     @Path("guardar")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response guardar(@FormParam("datosProducto") @DefaultValue("") String datosProducto) {
-        ControladorProducto cl = new ControladorProducto();
+    public Response guardar(@FormParam("datosEmpleado") @DefaultValue("") String datosEmpleado) {
+        ControladorEmpleado cl = new ControladorEmpleado();
         String out = null;
         Gson gson = new Gson();
-        Producto p = null;
+        Empleado em = null;
 
         try {
-            p = gson.fromJson(datosProducto, Producto.class);
-            if (p.getIdProducto()== 0) {
-                cl.guardar(p);
+            em = gson.fromJson(datosEmpleado, Empleado.class);
+            if (em.getIdEmpleado() == 0) {
+                cl.guardar(em);
             } else {
-                cl.actualizar(p);
+                cl.actualizar(em);
             }
         } catch (JsonParseException jpe) {
             jpe.printStackTrace();
 
            out = "{\"exception\":\"Error Interno del servidor\"}" + jpe.getMessage();
-        
+            
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,13 +62,13 @@ public class ProductoREST {
     {
         
         String out=null;
-        ControladorProducto cl= new ControladorProducto();
-        List<Producto> producto= null;
+        ControladorEmpleado cl= new ControladorEmpleado();
+        List<Empleado> empleados= null;
         
          try {
        
-             producto=cl.getAll(filtro);
-             out = new Gson().toJson(producto);
+             empleados=cl.getAll(filtro);
+             out = new Gson().toJson(empleados);
         
          } catch (Exception e) {
              System.out.println(e);
@@ -81,17 +82,17 @@ public class ProductoREST {
     @Path("eliminar")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response eliminar(@FormParam("datosProducto") @DefaultValue("") String datosProducto){
+    public Response eliminar(@FormParam("datosEmpleado") @DefaultValue("") String datosEmpleado){
         
         String out=null;
         Gson gson = new Gson();
-        Producto p= null;
-        ControladorProducto cl = new ControladorProducto();
+        Empleado em= null;
+        ControladorEmpleado cl = new ControladorEmpleado();
         
           try {
-            p=gson.fromJson(datosProducto, Producto.class);
+            em=gson.fromJson(datosEmpleado, Empleado.class);
             
-            cl.eliminar(p.getIdProducto());
+            cl.eliminar(em.getIdEmpleado());
          } catch (JsonParseException jpe) {
                 jpe.printStackTrace();//printStackTrace(): Se utiliza para imprimir el registro del stack donde se ha iniciado la excepción.
             
@@ -108,4 +109,5 @@ public class ProductoREST {
         }
         return Response.status(Response.Status.OK).entity(out).build();
                 }
+    
 }

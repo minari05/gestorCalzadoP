@@ -29,49 +29,49 @@
                  <p class="p-2 "></i></p>
                 <div class="col-lg-4 form-floating">
 
-                    <input id="txtNombre"  class="mt-2 form-control" style="background-color: #EFF7CB" >
-                    <label for="txtNombre" class="mt-2 " >Nombre</label>
+                    <input id="txtNombreProducto"  class="mt-2 form-control" style="background-color: #EFF7CB" >
+                    <label for="txtNombreProducto" class="mt-2 " >Nombre</label>
                 </div>
                 <div class="col-lg-4 form-floating">
 
-                    <input id="txtPrimerApellido" type="number"  class="mt-2 form-control" style="background-color: #EFF7CB">
-                    <label  for="txtPrimerApellido" class="mt-2 " >Precio de compra</label>
+                    <input id="txtPrecioCompra" type="number"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label  for="txtPrecioCompra" class="mt-2 " >Precio de compra</label>
                 </div>
                
                 <div class="col-lg-4 form-floating">
 
-                    <input id="txtSegundoApellido" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
-                    <label for="txtSegundoApellido" class="mt-2 ">Tipo<leg style="color:red" >*</leg></label>
+                    <input id="txtTipo" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtTipo" class="mt-2 ">Tipo<leg style="color:red" >*</leg></label>
                 </div>
                 <div class="col-lg-4 form-floating">
 
-                    <input id="txtMarca" type="number"  class="mt-2 form-control" style="background-color: #EFF7CB">
-                    <label for="txtMarca"  class="mt-2 ">cantidad<leg style="color:red" >*</leg></label>
+                    <input id="txtCantidad" type="number"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtCantidad"  class="mt-2 ">cantidad<leg style="color:red" >*</leg></label>
                 </div>
                 <div class="col-lg-4 form-floating">
 
-                    <input id="txtCURP" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
-                    <label for="txtCURP"  class="mt-2">Descripcion<leg style="color:red" >*</leg></label>
+                    <input id="txtDescripcion" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtDescripcion"  class="mt-2">Descripcion<leg style="color:red" >*</leg></label>
                 </div>
 
                 <div class="col-lg-4 form-floating">
 
-                    <input id="txtFechaInicioTrabajo" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
-                    <label for="txtFechaInicioTrabajo" class="mt-2 col-12">Provedor <leg style="color:red" >*</leg></label><br>
+                    <input id="txtProvedor" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtProvedor" class="mt-2 col-12">Provedor <leg style="color:red" >*</leg></label><br>
                 </div>
                 <div class="col-lg-4 form-floating">
 
-                    <input id="txtNSS" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
-                    <label for="txtNSS"  class="mt-2 "> Ultima fecha de compra</label>
+                    <input id="txtUltimaFechaCompra" type="text"  class="mt-2 form-control" style="background-color: #EFF7CB">
+                    <label for="txtUltimaFechaCompra"  class="mt-2 "> Ultima fecha de compra</label>
                 </div>
                 
                  </div>
             <div class="d-flex justify-content-around mt-2">
-                <button class="mt-2 mx-1 btn btn-success btn-lg"  id="btnGuardar">Guardar</button>
-                <button class="mt-2 mx-1 btn btn-info btn-lg"  id="btnLimpiar">Limpiar</button>
+                <button class="mt-2 mx-1 btn btn-success btn-lg" onclick="moduloMaterial.guardar();" id="btnGuardar">Guardar</button>
+                <button class="mt-2 mx-1 btn btn-info btn-lg"  onclick="moduloMaterial.limpiar();" id="btnLimpiar">Limpiar</button>
 
-                <button class="mt-2 mx-1 btn btn-danger btn-lg disabled"  id="btnEliminar">Eliminar</button>
-                  <button class="btn btn-primary disabled m-2"  id="btnActivar">Activar</button>
+                <button class="mt-2 mx-1 btn btn-danger btn-lg "  onclick="moduloMaterial.eliminar();"  id="btnEliminar">Eliminar</button>
+                  
             </div>
         </div>
     </div>
@@ -93,7 +93,7 @@
                     <button class="btn btn-success  m-2"  id="btnNuevo"><i class="fa-solid fa-circle-plus px-2"></i>Agregar nuevo</button>
                 </div>
             </div>
-            <table class="table table-hover mt-4" id="tblEmpleado">
+            <table class="table table-hover mt-4" id="tblProducto">
                 <thead class="table-dark">
                     <tr>
                         <th style="background-color: #87CEDE">Nombre</th>
@@ -105,7 +105,7 @@
                        
                     </tr>
                 </thead>
-                <tbody id="tblEmpleados">
+                <tbody id="tblProductos">
 
                 </tbody>
             </table>

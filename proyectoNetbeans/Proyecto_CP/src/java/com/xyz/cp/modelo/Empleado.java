@@ -7,37 +7,24 @@ package com.xyz.cp.modelo;
  */
 public class Empleado {
     
-    int idEmpleado;
-    String nombre;
-    String primerApellido;
-    String segundoApellido;
-    String rfc;
-    String curp;
-    String fechaInicioTrabajo;
-    String nss;
-    String salario;
-    String puesto;
-    String departamento;
-    String prestaciones;
+    private int idEmpleado;
+    private String nombre;
+    private String primerApellido;
+    private String segundoApellido;
+    private String rfc;
+    private String curp;
+    private String fechaInicioTrabajo;
+    private String nss;
+    private String salario;
+    private String puesto;
+    private String departamento;
+    private String prestaciones;
+    private String genero;
 
     public Empleado() {
     }
 
-    public Empleado(String nombre, String primerApellido, String segundoApellido, String rfc, String curp, String fechaInicioTrabajo, String nss, String salario, String puesto, String departamento, String prestaciones) {
-        this.nombre = nombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.rfc = rfc;
-        this.curp = curp;
-        this.fechaInicioTrabajo = fechaInicioTrabajo;
-        this.nss = nss;
-        this.salario = salario;
-        this.puesto = puesto;
-        this.departamento = departamento;
-        this.prestaciones = prestaciones;
-    }
-
-    public Empleado(int idEmpleado, String nombre, String primerApellido, String segundoApellido, String rfc, String curp, String fechaInicioTrabajo, String nss, String salario, String puesto, String departamento, String prestaciones) {
+    public Empleado(int idEmpleado, String nombre, String primerApellido, String segundoApellido, String rfc, String curp, String fechaInicioTrabajo, String nss, String salario, String puesto, String departamento, String prestaciones, String genero) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.primerApellido = primerApellido;
@@ -50,6 +37,15 @@ public class Empleado {
         this.puesto = puesto;
         this.departamento = departamento;
         this.prestaciones = prestaciones;
+        this.genero = genero;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public int getIdEmpleado() {
@@ -147,8 +143,12 @@ public class Empleado {
     public void setPrestaciones(String prestaciones) {
         this.prestaciones = prestaciones;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Empleado{" + "idEmpleado=" + idEmpleado + ", nombre=" + nombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido + ", rfc=" + rfc + ", curp=" + curp + ", fechaInicioTrabajo=" + fechaInicioTrabajo + ", nss=" + nss + ", salario=" + salario + ", puesto=" + puesto + ", departamento=" + departamento + ", prestaciones=" + prestaciones + ", genero=" + genero + '}';
+    }
+
+   
     
 }

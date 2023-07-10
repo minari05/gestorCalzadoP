@@ -15,7 +15,7 @@ fetch("modulos/moduloEmpleado/vista_empleado.html")
                 import ("../modulos/moduloEmpleado/controlador_empleado.js").then(
                         function(controller){
                         moduloEmpleado = controller;
-                               // moduloCliente.inicializar(); //Mandamos llamar la función inicializar
+                                moduloEmpleado.iniciar(); //Mandamos llamar la función inicializar
                         }
                 );
                 }
@@ -35,12 +35,13 @@ fetch("modulos/moduloMaterial/vista_material.html")
                 import ("../modulos/moduloMaterial/controlador_material.js").then(
                         function(controller){
                         moduloMaterial = controller;
-                              //  moduloMaterial.inicializar(); //Mandamos llamar la función inicializar
+                               moduloMaterial.iniciar(); //Mandamos llamar la función inicializar
                         }
                 );
                 }
         );
         }       
+
 
 
 
