@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title> Inicio</title>
-  <link rel="stylesheet" href="estilo/estiloInicio.css">
-  <link rel="icon" href="imagenes/icon2.png">
-   <link rel="stylesheet" type="text/css" href="estilo/css/bootstrap.min.css">
-   <link type="text/css" rel="stylesheet" href="estilo/gft.css">
-   <link rel="stylesheet" href="estilo/estiloEmpleado.css">
-  <meta name="author" content="XYZ">
-</head>
-<body>
-  <div class="container">
-    <div class="left-section">
-      <div class="icon">
-        <img src="imagenes/user.png" alt="Icon">
-      </div>
-    </div>
-    <div class="right-section">
-        <div class="logo">
-            <img src=".imagenes/Recurso-2-8.png" alt="">
-          </div>
-      <div class="title"> ¡Bienvenida! </div>
-      <div class="line"></div>
-      
-      <div class="button-container">
-        <div class="button">
-            <img onclick="cargarModuloEmpleado()" src="imagenes/teamB.png" alt="Button 1">
-          <span> Información de Empleados</span>
+    <head>
+        <title>Inicio</title>
+        <link rel="stylesheet" href="estilo/css_inicio.css" />
+        <link rel="stylesheet" href="estilo/css_empleado.css">
+        <link rel="stylesheet" href="estilo/css_boom.css"/>
+        <link rel="icon" href="imagenes/icon2.png" />
+        <link rel="stylesheet" href="estilo/"/>
+        <meta name="author" content="XYZ" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-section">
+                <div class="icon">
+                    <img src="imagenes/user.png" alt="Icon" />
+                </div>
+                <div class="sidebar">
+                    <a class="sidebar-item" onclick="cargarModuloEmpleado();"> Empleados </a>
+                    <a class="sidebar-item" onclick="cargarModuloMaterial();"> Inventario </a>
+                    <a class="sidebar-item" onclick="cargarModuloBoom();"> Explosion de Materiales </a>
+                </div>
+            </div>
+
+
+
+            <div class="right-section">
+
+                <div class="container-fluid" id="contenedorPrincipal">
+
+                    <img src="imagenes/Recurso-2-8 (1).png" alt="">
+
+                    <p class="rights">Todos los derechos reservados &copy; 2023</p>
+
+                </div>
+
+
+            </div>
+
+
+            <div onclick="cerrar()" class="logout">Cerrar sesión</div>
+
+
         </div>
-        <div class="button">
-          <img onclick="inv()" src="imagenes/stockB.png" alt="Button 2">
-          <span> Inventario </span>
-        </div>
-        <div class="button">
-          <img onclick="bom()" src="imagenes/boomB.png" alt="Button 3">
-          <span> Explosión de Materiales </span>
-        </div>
-      </div>
-      <div onclick="cerrar()" class="logout">Cerrar sesión</div>
-    </div>
-  </div>
-     <div class="container-fluid" id="contenedorPrincipal">
-               
-         </div>
-  <!-- comment <script src="../../js/js.js"></script>-->
-    <script src="style/js/bootstrap.bundle.js"></script>
+
+
+
         <script src="js/main.js"></script>
-        <script src="estilo/gft.js"></script>
-         <script src="estilo/icons.js" crossorigin="anonymous"></script>
-</body>
+    </body>
 </html>

@@ -1,5 +1,6 @@
 let moduloEmpleado;
 let moduloMaterial;
+let moduloBoom;
 
 
 function cargarModuloEmpleado(){
@@ -40,8 +41,26 @@ fetch("modulos/moduloMaterial/vista_material.html")
                 );
                 }
         );
-        }       
-
-
-
-
+} 
+        
+        
+function cargarModuloBoom(){
+    fetch("modulos/moduloBOOM/vista_boom.html")
+    .then(
+                function(response){
+                return response.text();
+                }
+        )
+        .then(
+                function(html){
+                document.getElementById("contenedorPrincipal").innerHTML = html;
+                import ("../modulos/moduloBOOM/controlador_boom.js").then(
+                        function(controller){
+                        moduloMaterial = controller;
+                           //    moduloMaterial.iniciar(); //Mandamos llamar la función inicializar
+                        }
+                );
+                }
+        );
+}     
+   
