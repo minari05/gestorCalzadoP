@@ -34,8 +34,10 @@ public class ProductoREST {
 
         try {
             p = gson.fromJson(datosProducto, Producto.class);
+            
             if (p.getIdProducto() == 0) {
                 cl.guardar(p);
+                out = gson.toJson(p);
             } else {
                 cl.actualizar(p);
             }

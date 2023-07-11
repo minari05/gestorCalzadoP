@@ -100,19 +100,19 @@ export function guardarEmp() {
             .then(function (data)
             {
                 if (data.exception != null) {
-                    Swal.fire('', "Error interno del servidor. Intente nuevamente más tarde" + data.exception + data, 'error');
+                    alerta("No jalo");
                     return;
                 }
                 if (data.error != null) {
-                    Swal.fire('', data.error, 'warning')
+                    alerta("No jalo x1");
                     return;
                 }
                 if (data.errorperm != null)
                 {
-                    Swal.fire('', "No tiene permiso para realizar esta operación.", 'warning');
+                    alert("No jalo x2");
                 }
                 document.getElementById("txtIdEmpleado").value = data.idEmpleado;
-                Swal.fire('', 'Datos del empleado actualizados correctamente', 'success');
+                alert("Si jalo");
                 servicioTabla();
                 clean();
             });
@@ -146,13 +146,13 @@ export function eliminar() {
 
                 if (data.exception != null)
                 {
-                    Swal.fire('', "Error interno del servidor. Intente nuevamente más tarde" + data.exception, 'error');
+                    alert("No jalo x1");
                     return;
                 }
                 if (data.error != null) {
-                    Swal.fire('', "No tiene permiso para realizar esta operación.", 'warning');
+                    alert("No jalo x2");
                 }
-                Swal.fire('', 'Datos del armazon se ha eliminado', 'success');
+                alert("Si jalo x3");
                 servicioTabla();
                 limpiar();
             });

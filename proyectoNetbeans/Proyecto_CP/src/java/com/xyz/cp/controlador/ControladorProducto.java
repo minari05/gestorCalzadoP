@@ -139,34 +139,34 @@ public class ControladorProducto {
 
     }
 
-    public List<Producto> buscar(String filtro) throws Exception {
-
-        String sql;
-
-        sql = "Select * from producto WHERE (idProducto LIKE %)" + filtro + "(nombre LIKE %)" + filtro +"(cantidad LIKE %)"+filtro+"(cantidad LIKE %)"+filtro+"(precioCompra LIKE %)"+filtro;
-
-        ConexionMySQL connMySQL = new ConexionMySQL();
-
-        Connection conn = connMySQL.open();
-
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-
-        ResultSet rs = pstmt.executeQuery();
-
-        List<Producto> productos = new ArrayList<>();
-
-        while (rs.next()) {
-
-            productos.add(fill(rs));
-
-        }
-
-        rs.close();
-        pstmt.close();
-        connMySQL.close();
-
-        return productos;
-
-    }
+//    public List<Producto> buscar(String filtro) throws Exception {
+//
+//        String sql;
+//
+//        sql = "Select * from producto WHERE (idProducto LIKE %)" + filtro + "(nombre LIKE %)" + filtro +"(cantidad LIKE %)"+filtro+"(cantidad LIKE %)"+filtro+"(precioCompra LIKE %)"+filtro;
+//
+//        ConexionMySQL connMySQL = new ConexionMySQL();
+//
+//        Connection conn = connMySQL.open();
+//
+//        PreparedStatement pstmt = conn.prepareStatement(sql);
+//
+//        ResultSet rs = pstmt.executeQuery();
+//
+//        List<Producto> productos = new ArrayList<>();
+//
+//        while (rs.next()) {
+//
+//            productos.add(fill(rs));
+//
+//        }
+//
+//        rs.close();
+//        pstmt.close();
+//        connMySQL.close();
+//
+//        return productos;
+//
+//    }
 
 }

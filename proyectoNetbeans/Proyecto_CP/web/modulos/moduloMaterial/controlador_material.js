@@ -56,7 +56,7 @@ export function cargarTabla(datos) {
     });
     document.getElementById("tblProductos").innerHTML = cuerpo;
 }
-export function guardar() {
+export function guardarMat() {
 
     let datos = null;
     let params = null;
@@ -70,13 +70,17 @@ export function guardar() {
 
     }
 
+
     producto.nombre = document.getElementById("txtNombreProducto").value;
     producto.precioCompra = parseFloat(document.getElementById("txtPrecioCompra").value);
     producto.tipo = document.getElementById("txtTipo").value;
     producto.descripcion = document.getElementById("txtDescripcion").value;
-    producto.ultimaFechaCompra = document.getElementById("txtUltimaFechaCompra").value;
+    producto.ultimaFechaCompra = document.getElementById("txtUltimaFecha").value;
     producto.cantidad = parseInt(document.getElementById("txtCantidad").value);
-    producto.proveedor = document.getElementById("txtProvedor").value;
+    producto.descripcion = document.getElementById("txtDescripcion").value;
+    producto.proveedor = document.getElementById("txtProveedor").value;
+    producto.ultimaFechaCompra = document.getElementById("txtUltimaFecha").value;
+    
 
 
 
@@ -97,23 +101,24 @@ export function guardar() {
             .then(function (data)
             {
                 if (data.exception != null) {
-                    Swal.fire('', "Error interno del servidor. Intente nuevamente más tarde" + data.exception + data, 'error');
+                    alerta("No jalo");
                     return;
                 }
                 if (data.error != null) {
-                    Swal.fire('', data.error, 'warning')
+                    alerta("No jalo x1");
                     return;
                 }
                 if (data.errorperm != null)
                 {
-                    Swal.fire('', "No tiene permiso para realizar esta operación.", 'warning');
+                    alert("No jalo x2");
                 }
-                document.getElementById("txtIdEmpleado").value = data.idEmpleado;
-                Swal.fire('', 'Datos del empleado actualizados correctamente', 'success');
+                document.getElementById("txtIdProducto").value = data.idProducto;
+                alert("Si jalo");
                 servicioTabla();
-                clean();
+                limpiar();;
             });
     //setDetalleVisible(false);
+
 }
 
 export function eliminar() {
@@ -162,8 +167,8 @@ export function selectProducto(index) {
     document.getElementById("txtTipo").value = productos[index].tipo;
     document.getElementById("txtCantidad").value = productos[index].cantidad;
     document.getElementById("txtDescripcion").value = productos[index].descripcion;
-    document.getElementById("txtProvedor").value = productos[index].proveedor;
-    document.getElementById("txtUltimaFechaCompra").value = productos[index].ultimaFechaCompra;
+    document.getElementById("txtProveedor").value = productos[index].proveedor;
+    document.getElementById("txtUltimaFecha").value = productos[index].ultimaFechaCompra;
 
 
     //document.getElementById("btnDelete").classList.remove("disabled");
@@ -178,13 +183,9 @@ export function limpiar() {
     document.getElementById("txtTipo").value = "";
     document.getElementById("txtCantidad").value = "";
     document.getElementById("txtDescripcion").value = ""
-    document.getElementById("txtProvedor").value = "";
-    document.getElementById("txtUltimaFechaCompra").value = "";
+    document.getElementById("txtProveedor").value = "";
+    document.getElementById("txtUltimaFecha").value = "";
 
 
     indexProductoSeleccionado = 0;
 }
-
-
-
-

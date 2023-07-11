@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/web/index.html</file>
-            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/web/modulos/moduloEmpleado/vista_empleado.html</file>
-            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/web/modulos/moduloEmpleado/controlador_empleado.js</file>
-            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/web/estilo/css_inicio.css</file>
-            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/src/java/com/xyz/cp/controlador/ControladorEmpleado.java</file>
-            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/src/java/com/xyz/cp/rest/EmpleadoREST.java</file>
+            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/src/java/com/xyz/cp/rest/ProductoREST.java</file>
+            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/web/modulos/moduloMaterial/controlador_material.js</file>
+            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/src/java/com/xyz/cp/modelo/Producto.java</file>
+            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/src/java/com/xyz/cp/controlador/ControladorProducto.java</file>
+            <file>file:/C:/Users/ximer/Documents/Calzado%20Padua%2010072023/gestorCalzadoP/proyectoNetbeans/Proyecto_CP/web/modulos/moduloMaterial/vista_material.html</file>
         </group>
     </open-files>
 </project-private>
