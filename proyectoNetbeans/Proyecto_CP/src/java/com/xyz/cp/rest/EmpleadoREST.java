@@ -1,4 +1,3 @@
-
 package com.xyz.cp.rest;
 
 import com.google.gson.Gson;
@@ -21,9 +20,9 @@ import java.util.List;
  *
  * @author yazmi
  */
-
 @Path("empleado")
 public class EmpleadoREST {
+
     @Path("guardar")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -37,77 +36,75 @@ public class EmpleadoREST {
             em = gson.fromJson(datosEmpleado, Empleado.class);
             if (em.getIdEmpleado() == 0) {
                 cl.guardar(em);
+                out = gson.toJson(em);
             } else {
                 cl.actualizar(em);
             }
+
         } catch (JsonParseException jpe) {
             jpe.printStackTrace();
 
-           out = "{\"exception\":\"Error Interno del servidor\"}" + jpe.getMessage();
-            
-            
+            out = "{\"exception\":\"Error Interno del servidor\"}" + jpe.getMessage();
+
         } catch (Exception e) {
             e.printStackTrace();
 
-          out ="{\"exception\":\"que paso\"}" + e.getMessage();
+            out = "{\"exception\":\"que paso\"}" + e.getMessage();
         }
 
         return Response.status(Response.Status.OK).entity(out).build();
     }
-    
+
     @Path("getAll")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll(@QueryParam("filtro")@DefaultValue("") String filtro) 
-    {
-        
-        String out=null;
-        ControladorEmpleado cl= new ControladorEmpleado();
-        List<Empleado> empleados= null;
-        
-         try {
-       
-             empleados=cl.getAll(filtro);
-             out = new Gson().toJson(empleados);
-        
-         } catch (Exception e) {
-             System.out.println(e);
+    public Response getAll(@QueryParam("filtro") @DefaultValue("") String filtro) {
+
+        String out = null;
+        ControladorEmpleado cl = new ControladorEmpleado();
+        List<Empleado> empleados = null;
+
+        try {
+
+            empleados = cl.getAll(filtro);
+            out = new Gson().toJson(empleados);
+
+        } catch (Exception e) {
+            System.out.println(e);
             e.printStackTrace();
             out = "{\"exception\":\"Error Interno del servidor\"}" + e.getMessage();
-             
-       }
-        return  Response.status(Response.Status.OK).entity(out).build();
+
+        }
+        return Response.status(Response.Status.OK).entity(out).build();
     }
-    
+
     @Path("eliminar")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response eliminar(@FormParam("datosEmpleado") @DefaultValue("") String datosEmpleado){
-        
-        String out=null;
+    public Response eliminar(@FormParam("datosEmpleado") @DefaultValue("") String datosEmpleado) {
+
+        String out = null;
         Gson gson = new Gson();
-        Empleado em= null;
+        Empleado em = null;
         ControladorEmpleado cl = new ControladorEmpleado();
-        
-          try {
-            em=gson.fromJson(datosEmpleado, Empleado.class);
-            
+
+        try {
+            em = gson.fromJson(datosEmpleado, Empleado.class);
+
             cl.eliminar(em.getIdEmpleado());
-         } catch (JsonParseException jpe) {
-                jpe.printStackTrace();//printStackTrace(): Se utiliza para imprimir el registro del stack donde se ha iniciado la excepción.
-            
+        } catch (JsonParseException jpe) {
+            jpe.printStackTrace();//printStackTrace(): Se utiliza para imprimir el registro del stack donde se ha iniciado la excepción.
+
             //imprimimos que hay un error 
-            out= "{\"exception\":\"Formato Json de Datos Incorrectos\"}" ;
-            
-          }catch(Exception e){
-           e.printStackTrace();
-           
-           
-           out="{\"exception\":\"Error Interno del servidor\"}" + e.getMessage();
-           
-           
+            out = "{\"exception\":\"Formato Json de Datos Incorrectos\"}";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            out = "{\"exception\":\"Error Interno del servidor\"}" + e.getMessage();
+
         }
         return Response.status(Response.Status.OK).entity(out).build();
-                }
-    
+    }
+
 }

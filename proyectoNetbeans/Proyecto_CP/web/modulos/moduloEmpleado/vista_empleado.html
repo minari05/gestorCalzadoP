@@ -9,7 +9,7 @@
         <form>
           <div class="">
                 
-            <input  class="" type="text" id="txtIdEmpleado" name="txtNombre" style="display:none;" readonly>
+            <input  class="" type="text" id="txtIdEmpleado" style="display:none;" readonly>
             <label for="txtIdEmpleado" style="display:none;"></label>
           </div>
           <div class="form-container">
@@ -17,57 +17,57 @@
               
               <div class="form-group">
                 
-                <input type="text" id="txtNombre" name="txtNombre" required>
+                <input type="text" id="txtNombre" required>
                 <label for="txtNombre">Nombre</label>
               </div>
               <div class="form-group">
-                <input type="text" id="txtPrimerApellido" name="txtPrimerApellido" required>
+                <input type="text" id="txtPrimerApellido" required>
                 <label for="txtPrimerApellido">Primer Apellido</label>
               </div>
               <div class="form-group">
-                <input type="text" id="txtSegundoApellido" name="txtSegundoApellido" required>
+                <input type="text" id="txtSegundoApellido" required>
                 <label for="txtSegundoApellido">Segundo Apellido</label>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <input type="text" id="txtRFC" name="txtRFC" required>
+                <input type="text" id="txtRFC"  required>
                 <label for="txtRFC">RFC</label>
               </div>
               <div class="form-group">
-                <input type="text" id="txtCURP" name="txtCURP" required>
+                <input type="text" id="txtCURP"  required>
                 <label for="txtCURP">CURP</label>
               </div>
               <div class="form-group">
-                <input type="date" id="txtFechaInicioTrabajo" name="txtFechaInicioTrabajo" required>
+                <input type="date" id="txtFechaInicioTrabajo" required>
                 <label for="txtFechaInicioTrabajo">Fecha de Inicio de Trabajo</label>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <input type="number" id="txtNSS" name="txtNSS" required>
+                <input type="number" id="txtNSS"  required>
                 <label for="txtNSS">NSS</label>
               </div>
               <div class="form-group">
-                <input type="number" id="txtTipoSalario" name="txtSalario" required>
+                <input type="text" id="txtTipoSalario"  required>
                 <label for="txtTipoSalario">Salario</label>
               </div>
               <div class="form-group">
-                <input type="text" id="txtPuesto" name="txtPuesto" required>
+                <input type="text" id="txtPuesto"  required>
                 <label for="txtPuesto">Puesto</label>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <input type="text" id="txtDepartamento" name="txtDepartamento" required>
+                <input type="text" id="txtDepartamento"  required>
                 <label for="txtDepartamento">Departamento</label>
               </div>
               <div class="form-group">
-                <input type="text" id="txtPrestaciones" name="txtPrestaciones" required>
+                <input type="text" id="txtPrestaciones"  required>
                 <label for="txtPrestaciones">Prestaciones</label>
               </div>
                 <div class="form-group">
-                <select  id="txtGenero" name="txtGenero">
+                    <select  id="txtGenero" required>
                     <option value="" > --- </option>
                     <option value="M" >Masculino</option>
                     <option value="F">Femenino</option>
@@ -82,9 +82,8 @@
 
           <div class="button-row">
             <div class="form-group">
-              <button type="submit" class="submit"  onclick="moduloEmpleado.guardar();" id="btnGuardar">Enviar</button>
+                <button type="button" onclick="moduloEmpleado.guardarEmp();" id="btnGuardar">Enviar</button>
               <button type="reset" class="clean" onclick="moduloEmpleado.limpiar();" id="btnLimpiar">Limpiar</button>
-              <button type="button" class="update" >Actualizar</button>
               <button type="button" class="delete" onclick="moduloEmpleado.eliminar();"  id="btnEliminar">Eliminar</button>
             </div>
           </div>

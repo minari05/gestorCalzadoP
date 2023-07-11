@@ -1,7 +1,6 @@
 
 package com.xyz.cp.controlador;
 
-import com.mysql.cj.xdevapi.Result;
 import com.xyz.cp.bd.ConexionMySQL;
 import com.xyz.cp.modelo.Empleado;
 import java.sql.CallableStatement;

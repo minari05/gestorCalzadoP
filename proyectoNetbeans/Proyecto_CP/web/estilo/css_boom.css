@@ -164,23 +164,7 @@ button {
     cursor: pointer;
     font-weight: bolder;
     font-size: 20px;
-    background-color: #5C0C16;
-}
-
-.submit {
     background-color: green;
-}
-
-.clean {
-    background-color: rgb(95, 142, 252);
-}
-
-.update {
-    background-color: rgb(255, 166, 0);
-}
-
-.delete {
-    background-color: rgb(200, 90, 90);
 }
 
 button:hover {
@@ -240,7 +224,7 @@ table th {
 .print-button button {
     padding: 10px 20px;
     border-radius: 10px;
-    background-color: #5C0C16;
+    background-color: rgb(95, 142, 252);
     color: white;
     border: none;
     cursor: pointer;
