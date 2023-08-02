@@ -88,20 +88,17 @@ printTableBtn.addEventListener("click", function () {
 
 
 
-// Agregar el evento clic al botón de impresión de tabla
 printTableBtn.addEventListener("click", function () {
     printTable();
 });
 
 // Función para imprimir solo la tabla
 function printTable() {
-    const originalDisplayStyle = materialsTable.style.display; // Guardamos el estilo actual de la tabla
+    const originalDisplayStyle = materialsTable.style.display; 
 
-    // Mostramos la tabla temporalmente para imprimir
     materialsTable.style.display = 'table';
 
-    window.print(); // Imprimir la página
+    window.print(); 
 
-    // Restauramos el estilo original de la tabla
     materialsTable.style.display = originalDisplayStyle;
 }

@@ -85,10 +85,9 @@ export function guardarMat() {
     })
             .then(response => {
                 if (response.ok) {
-                    // Si la respuesta está vacía o no es un JSON válido, considera que la operación fue exitosa.
+
                     return Promise.resolve();
                 } else {
-                    // Si la respuesta no fue exitosa, devuelve el JSON parseado.
                     return response.json();
                 }
             })
@@ -118,7 +117,6 @@ export function guardarMat() {
                     return;
                 }
 
-                // Mensaje de éxito al guardar el material
                 Swal.fire({
                     icon: 'success',
                     title: 'Material guardado',
@@ -207,4 +205,23 @@ export function limpiar() {
 
 
     indexProductoSeleccionado = 0;
+}
+export function buscar() {
+  let input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("txtBusqueda"); 
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tblProducto"); 
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0]; 
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
 }

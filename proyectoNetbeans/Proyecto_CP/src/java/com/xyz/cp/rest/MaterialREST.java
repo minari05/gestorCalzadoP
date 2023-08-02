@@ -42,7 +42,6 @@ public class MaterialREST {
                 cl.actualizar(p);
             }
 
-            // Después de guardar o actualizar el material exitosamente
             return Response.status(Response.Status.OK).entity("{\"message\":\"Operación exitosa\"}").build();
         } catch (JsonParseException jpe) {
             jpe.printStackTrace();

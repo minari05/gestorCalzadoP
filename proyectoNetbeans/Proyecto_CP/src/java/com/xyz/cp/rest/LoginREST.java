@@ -55,7 +55,6 @@ public class LoginREST {
             out = "{\"exception\":\"error interno en el servidor\"}";
            
 
-            // return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.toString()).build();
         } 
         
         

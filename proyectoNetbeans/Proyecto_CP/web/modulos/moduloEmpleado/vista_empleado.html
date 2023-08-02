@@ -1,5 +1,5 @@
 
-<!-- Modulo de Emp´leado -->
+<!-- Modulo de Empleado -->
 <div class="title">Empleados</div>
 <div class="line"></div>
 <div class="container-fluid row d-flex justify-content-md-center" style="margin-top: 50px">
@@ -91,6 +91,10 @@
     </div>
 
     <div  id="divCatalogo" class="row">
+        <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre..." oninput="this.value = this.value.toUpperCase()">
+                <button class="button" onclick="moduloEmpleado.buscar()">Buscar</button>
+            </div>
         <table id="tblEmpleado">
             <thead>
                 <tr>
@@ -101,13 +105,9 @@
                     <th>Prestaciones</th>
                 </tr>
             </thead>
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Buscar..." oninput="this.value = this.value.toUpperCase()">
-                <button class="buttonb" onclick="moduloEmpleado.buscar()">Buscar</button>
-            </div>
+            
             <tbody id="tblEmpleados">
 
             </tbody>
         </table>
-    </div>     
-</div>
+    </div>   
