@@ -1,79 +1,63 @@
-<!-- Modulo BOOM --> 
-
-
-<h1 class="title">Explosión de Materiales</h1>
+<!-- Modulo bom -->
+<div class="title">Explosión de Materiales</div>
 <div class="line"></div>
-<div class="container-fluid row d-flex justify-content-md-center" style="margin-top: 50px">
 
-    <!--  --> 
 
+<h2 class="agmat">Agregar Material</h2>
+
+<form id="material-form">
     <div class="form-container">
-        <div class="search-bar">
-            <input class="barra" type="text" placeholder="Buscar" id="txtbusquedaProducto">
-        <button type="button" style="background-color: #5C0C16;">Buscar</button>
-    </div>
-        <form>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="material-id">ID:</label>
-                    <input type="text" id="material-id" >
-                </div>
 
-                <div class="form-group">
-                    <label for="material-name">Nombre:</label>
-                    <input type="text" id="material-name" >
-                </div>
 
-                <div class="form-group">
-                    <label for="material-quantity">Cantidad:</label>
-                    <input type="number" id="material-quantity" min="1"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="material-unit">Unidades:</label>
-                    <input type="text" id="material-unit" >
-                </div>
-
-                <div class="form-group">
-                    <label for="material-unit-cost">Costo Unitario:</label>
-                    <input type="number" id="material-unit-cost" min="0" step="0.01" >
-                </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="material-name">Nombre del Material:</label>
+                <input type="text" id="material-name" required>
             </div>
-            
-            
-            <div class="button-add">
-                <button type="submit">Agregar</button>
+            <div class="form-group">
+                <label for="material-quantity">Cantidad Utilizada por Producto:</label>
+                <input type="number" id="material-quantity" min="1" required>
             </div>
-            
-        </form>
+            <div class="form-group">
+                <label for="material-unit">Número de Unidades por Hacer:</label>
+                <input type="text" id="material-unit" required>
+            </div>
+            <div class="form-group">
+                <label for="material-unit-cost">Costo Unitario de Material:</label>
+                <input type="number" id="material-unit-cost" min="0" step="0.01" required>
+
+            </div>
+        </div>
+    </div>
+    <div class="ag">
+        <button type="submit" class="submit">Agregar</button>
     </div>
 
-    <table id="materials-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Cantidad</th>
-                <th>Unidades</th>
-                <th>Costo Unitario</th>
-                <th>Costo</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Aquí se agregarán las filas dinámicamente -->
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="5">Costo Total:                              $</td>
-                <td id="total-cost" colspan="2"> 0</td>
-            </tr>
-        </tfoot>
-    </table>
-    <div class="print-button">
-        <button onclick="printTable()">Imprimir</button>
-    </div>
+</form>
+<h1>Tabla de Materiales</h1>
 
+<table id="materials-table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Unidades</th>
+            <th>Costo Unitario</th>
+            <th>Costo</th>
+            <th>Accion</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <!-- AquÃ­ se agregarÃ¡n las filas dinÃ¡micamente -->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">Costo Total:</td>
+            <td id="total-cost" colspan="2">0</td>
+        </tr>
+    </tfoot>
+</table>
+<div class="age">
+    <button id="print-table-btn" class="delete">Imprimir Tabla</button>    
 </div>
-

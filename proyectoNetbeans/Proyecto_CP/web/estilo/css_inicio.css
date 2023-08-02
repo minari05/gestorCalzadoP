@@ -54,12 +54,12 @@ img {
 }
 
 .sidebar-item {
-  margin-bottom: 88px;
-  color: white;
-  padding: 18px;
-  cursor: pointer;
-  font-size: 17px;
-  text-decoration: none;
+margin-bottom: 100px;
+color: white;
+padding: 15px;
+cursor: pointer;
+font-size: 17px;
+text-decoration: none;
 }
 
 .sidebar-item:hover {

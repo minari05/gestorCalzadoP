@@ -1,7 +1,7 @@
 package com.xyz.cp.controlador;
 
 import com.xyz.cp.bd.ConexionMySQL;
-import com.xyz.cp.modelo.Producto;
+import com.xyz.cp.modelo.Material;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,9 +15,9 @@ import java.util.List;
  *
  * @author ximer
  */
-public class ControladorProducto {
+public class ControladorMaterial {
 
-    public Producto guardar(Producto a) throws SQLException {
+    public Material guardar(Material a) throws SQLException {
         String sql = " {call insertarProducto(?,?,?,?,?,?,?,?)}";
 
         int idProducto = -1;
@@ -42,7 +42,7 @@ public class ControladorProducto {
 
         idProducto = cstmt.getInt(8);
 
-        Producto pr = new Producto();
+        Material pr = new Material();
         pr.setIdProducto(idProducto);
 
         cstmt.close();
@@ -53,7 +53,7 @@ public class ControladorProducto {
 
     }
 
-    public void actualizar(Producto p) throws SQLException {
+    public void actualizar(Material p) throws SQLException {
 
         String sql = "{call actualizarProducto(?,?,?,?,?,?,?,?)}";
 
@@ -70,6 +70,7 @@ public class ControladorProducto {
         cstmt.setString(5, p.getDescripcion());
         cstmt.setString(6, p.getProveedor());
         cstmt.setString(7, p.getUltimaFechaCompra());
+        
         cstmt.setInt(8, p.getIdProducto());
 
         cstmt.executeUpdate();
@@ -79,7 +80,7 @@ public class ControladorProducto {
 
     }
 
-    public List<Producto> getAll(String filtro) throws SQLException {
+    public List<Material> getAll(String filtro) throws SQLException {
         String sql = "SELECT * FROM producto";
 
         ConexionMySQL connMySQL = new ConexionMySQL();
@@ -90,7 +91,7 @@ public class ControladorProducto {
 
         ResultSet rs = pstmt.executeQuery();
 
-        List<Producto> producto = new ArrayList<>();
+        List<Material> producto = new ArrayList<>();
 
         while (rs.next()) {
             producto.add(fill(rs));
@@ -103,9 +104,9 @@ public class ControladorProducto {
         return producto;
     }
 
-    private Producto fill(ResultSet rs) throws SQLException {
+    private Material fill(ResultSet rs) throws SQLException {
 
-        Producto p = new Producto();
+        Material p = new Material();
 
         p.setIdProducto(rs.getInt("idProducto"));
         p.setNombre(rs.getString("nombre"));
@@ -113,7 +114,7 @@ public class ControladorProducto {
         p.setTipo(rs.getString("tipo"));
         p.setCantidad(rs.getInt("cantidad"));
         p.setDescripcion(rs.getString("descripcion"));
-        p.setProveedor(rs.getString("provedor"));
+        p.setProveedor(rs.getString("proveedor"));
         p.setUltimaFechaCompra(rs.getString("ultimaFechaCompra"));
 
         return p;
@@ -139,34 +140,5 @@ public class ControladorProducto {
 
     }
 
-//    public List<Producto> buscar(String filtro) throws Exception {
-//
-//        String sql;
-//
-//        sql = "Select * from producto WHERE (idProducto LIKE %)" + filtro + "(nombre LIKE %)" + filtro +"(cantidad LIKE %)"+filtro+"(cantidad LIKE %)"+filtro+"(precioCompra LIKE %)"+filtro;
-//
-//        ConexionMySQL connMySQL = new ConexionMySQL();
-//
-//        Connection conn = connMySQL.open();
-//
-//        PreparedStatement pstmt = conn.prepareStatement(sql);
-//
-//        ResultSet rs = pstmt.executeQuery();
-//
-//        List<Producto> productos = new ArrayList<>();
-//
-//        while (rs.next()) {
-//
-//            productos.add(fill(rs));
-//
-//        }
-//
-//        rs.close();
-//        pstmt.close();
-//        connMySQL.close();
-//
-//        return productos;
-//
-//    }
 
 }

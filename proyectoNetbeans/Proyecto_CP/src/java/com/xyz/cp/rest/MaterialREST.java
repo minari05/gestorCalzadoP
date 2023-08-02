@@ -2,8 +2,8 @@ package com.xyz.cp.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.xyz.cp.controlador.ControladorProducto;
-import com.xyz.cp.modelo.Producto;
+import com.xyz.cp.controlador.ControladorMaterial;
+import com.xyz.cp.modelo.Material;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
@@ -21,38 +21,38 @@ import java.util.List;
  * @author ximer
  */
 @Path("producto")
-public class ProductoREST {
+public class MaterialREST {
 
     @Path("guardar")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response guardar(@FormParam("datosProducto") @DefaultValue("") String datosProducto) {
-        ControladorProducto cl = new ControladorProducto();
+        ControladorMaterial cl = new ControladorMaterial();
         String out = null;
         Gson gson = new Gson();
-        Producto p = null;
+        Material p = null;
 
         try {
-            p = gson.fromJson(datosProducto, Producto.class);
-            
+            p = gson.fromJson(datosProducto, Material.class);
+
             if (p.getIdProducto() == 0) {
                 cl.guardar(p);
-                out = gson.toJson(p);
+
             } else {
                 cl.actualizar(p);
             }
+
+            // Después de guardar o actualizar el material exitosamente
+            return Response.status(Response.Status.OK).entity("{\"message\":\"Operación exitosa\"}").build();
         } catch (JsonParseException jpe) {
             jpe.printStackTrace();
-
             out = "{\"exception\":\"Error Interno del servidor\"}" + jpe.getMessage();
-
         } catch (Exception e) {
             e.printStackTrace();
-
             out = "{\"exception\":\"que paso\"}" + e.getMessage();
         }
 
-        return Response.status(Response.Status.OK).entity(out).build();
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(out).build();
     }
 
     @Path("getAll")
@@ -61,8 +61,8 @@ public class ProductoREST {
     public Response getAll(@QueryParam("filtro") @DefaultValue("") String filtro) {
 
         String out = null;
-        ControladorProducto cl = new ControladorProducto();
-        List<Producto> producto = null;
+        ControladorMaterial cl = new ControladorMaterial();
+        List<Material> producto = null;
 
         try {
 
@@ -85,49 +85,54 @@ public class ProductoREST {
 
         String out = null;
         Gson gson = new Gson();
-        Producto p = null;
-        ControladorProducto cl = new ControladorProducto();
+        Material p = null;
+        ControladorMaterial cm = new ControladorMaterial();
 
         try {
-            p = gson.fromJson(datosProducto, Producto.class);
+            p = gson.fromJson(datosProducto, Material.class);
 
-            cl.eliminar(p.getIdProducto());
+            cm.eliminar(p.getIdProducto());
         } catch (JsonParseException jpe) {
-            jpe.printStackTrace();//printStackTrace(): Se utiliza para imprimir el registro del stack donde se ha iniciado la excepción.
-
-            //imprimimos que hay un error 
-            out = "{\"exception\":\"Formato Json de Datos Incorrectos\"}";
-
+            jpe.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"exception\":\"Formato Json de Datos Incorrectos\"}")
+                    .build();
         } catch (Exception e) {
             e.printStackTrace();
-
-            out = "{\"exception\":\"Error Interno del servidor\"}" + e.getMessage();
-
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"exception\":\"Error Interno del servidor\"}")
+                    .build();
         }
-        return Response.status(Response.Status.OK).entity(out).build();
+
+        return Response.status(Response.Status.OK)
+                .entity("{\"message\":\"Material eliminado correctamente\"}")
+                .build();
     }
-
-    @Path("buscar")
+    
     @POST
+    @Path("buscar")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response buscar(@FormParam("filtro") @DefaultValue("") String filtro) throws SQLException {
-
+    public Response buscar(@FormParam("filtro") @DefaultValue("") String filtro){
+    
         String out = null;
-        ControladorProducto cp = null;
-        List<Producto> productos = null;
-
+        ControladorMaterial cm = null;
+        List<Material> material = null;
+        
+        
         try {
-            cp = new ControladorProducto();
-            productos = cp.getAll(filtro);
-            out = new Gson().toJson(productos);
-
+            cm = new ControladorMaterial();
+            material = cm.getAll(filtro);
+            out = new Gson().toJson(material);
+            
         } catch (Exception e) {
+            
             e.printStackTrace();
             out = "{\"exception\":\"Error interno del servidor.\"}";
         }
-
-         return Response.status(Response.Status.OK).entity(out).build();
-
+        return Response.status(Response.Status.OK).entity(out).build();
+    
     }
-
+    
 }
+
+

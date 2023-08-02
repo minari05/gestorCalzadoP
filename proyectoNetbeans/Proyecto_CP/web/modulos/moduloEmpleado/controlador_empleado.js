@@ -29,10 +29,12 @@ export function servicioTabla() {
             .then(function (data) {
                 if (data.exception != null) {
                     Swal.fire('', 'error interno del servidor.Intete nuevamente mas tarde.', 'error');
+                    // alert("error interno del servidor, intenta mas tarde");
                     return;
                 }
                 if (data.error != null) {
                     Swal.fire('', data.error, 'Warning');
+                    //alert("data error");
                     return;
                 }
 
@@ -47,8 +49,7 @@ export function cargarTabla(datos) {
         let registro =
                 '<tr onclick="moduloEmpleado.selectEmpleado(' + empleados.indexOf(empleado) + ');">' +
                 '<td>' + empleado.nombre + '</td>' +
-                '<td>' + empleado.primerApellido + '</td>' +
-                '<td>' + empleado.segundoApellido + '</td>' +
+                '<td>' + empleado.primerApellido + ' ' + empleado.segundoApellido + '</td>' +
                 '<td>' + empleado.puesto + '</td>' +
                 '<td>' + empleado.departamento + '</td>' +
                 '<td>' + empleado.prestaciones + '</td></tr>';
@@ -56,6 +57,7 @@ export function cargarTabla(datos) {
     });
     document.getElementById("tblEmpleados").innerHTML = cuerpo;
 }
+
 export function guardarEmp() {
 
     let datos = null;
@@ -88,73 +90,98 @@ export function guardarEmp() {
 
     params = new URLSearchParams(datos);
 
-    fetch("api/empleado/guardar",
-            {
-                method: "POST",
-                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-                body: params
-            })
+    fetch("api/empleado/guardar", {
+        method: "POST",
+        headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+        body: params
+    })
             .then(response => {
                 return response.json();
             })
-            .then(function (data)
-            {
+            .then(function (data) {
                 if (data.exception != null) {
-                    alerta("No jalo");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error en el servidor',
+                        text: 'Ha ocurrido un error interno en el servidor. Por favor, inténtelo nuevamente más tarde.'
+                    });
                     return;
                 }
                 if (data.error != null) {
-                    alerta("No jalo x1");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al guardar empleado',
+                        text: 'Ha ocurrido un error al guardar el empleado. Por favor, verifique los datos e inténtelo nuevamente.'
+                    });
                     return;
                 }
-                if (data.errorperm != null)
-                {
-                    alert("No jalo x2");
+                if (data.errorperm != null) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Permiso denegado',
+                        text: 'No tiene los permisos necesarios para realizar esta acción.'
+                    });
                 }
-                document.getElementById("txtIdEmpleado").value = data.idEmpleado;
-                alert("Si jalo");
-                servicioTabla();
-                clean();
+
+                // Mensaje de éxito al guardar el empleado
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Empleado guardado',
+                    text: 'El empleado se ha guardado correctamente.',
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(() => {
+                    servicioTabla();
+                    limpiar();
+                });
             });
     //setDetalleVisible(false);
 }
 
 export function eliminar() {
-
     let datos = null;
     let params = null;
 
     let empleado = new Object();
+
     empleado.idEmpleado = parseInt(document.getElementById("txtIdEmpleado").value);
 
     datos = {
-        datosEmpleado: JSON.stringify(empleado)};
+        datosEmpleado: JSON.stringify(empleado)
+    };
 
     params = new URLSearchParams(datos);
 
-
-    fetch("api/empleado/eliminar",
-            {
-                method: "POST",
-                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-                body: params
-            })
+    fetch("api/empleado/eliminar", {
+        method: "POST",
+        headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+        body: params
+    })
             .then(response => {
+                if (!response.ok) {
+                    throw new Error('La solicitud ha fallado. Código de estado: ' + response.status);
+                }
                 return response.json();
             })
             .then(function (data) {
-
-                if (data.exception != null)
-                {
-                    alert("No jalo x1");
-                    return;
-                }
-                if (data.error != null) {
-                    alert("No jalo x2");
-                }
-                alert("Si jalo x3");
-                servicioTabla();
-                limpiar();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Empleado eliminado',
+                    text: 'El empleado se ha eliminado correctamente.',
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(() => {
+                    servicioTabla();
+                    limpiar();
+                });
+            })
+            .catch(function (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en la solicitud',
+                    text: 'Ha ocurrido un error en la solicitud al servidor. Por favor, inténtelo nuevamente.'
+                });
+                console.error(error);
             });
 }
 
@@ -192,5 +219,25 @@ export function limpiar() {
     document.getElementById("txtGenero").value = "";
     document.getElementById("txtTipoSalario").value = "";
     indexEmpleadoSeleccionado = 0;
+}
+
+export function buscar() {
+    let input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("tblEmpleado");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0]; // Columna de nombres (ajústalo según tu tabla)
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
 }
 

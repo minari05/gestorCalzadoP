@@ -82,29 +82,28 @@ public class EmpleadoREST {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response eliminar(@FormParam("datosEmpleado") @DefaultValue("") String datosEmpleado) {
-
-        String out = null;
+       
         Gson gson = new Gson();
         Empleado em = null;
         ControladorEmpleado cl = new ControladorEmpleado();
 
         try {
             em = gson.fromJson(datosEmpleado, Empleado.class);
-
             cl.eliminar(em.getIdEmpleado());
         } catch (JsonParseException jpe) {
-            jpe.printStackTrace();//printStackTrace(): Se utiliza para imprimir el registro del stack donde se ha iniciado la excepción.
-
-            //imprimimos que hay un error 
-            out = "{\"exception\":\"Formato Json de Datos Incorrectos\"}";
-
+            jpe.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"exception\":\"Formato Json de Datos Incorrectos\"}")
+                    .build();
         } catch (Exception e) {
             e.printStackTrace();
-
-            out = "{\"exception\":\"Error Interno del servidor\"}" + e.getMessage();
-
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"exception\":\"Error Interno del servidor\"}")
+                    .build();
         }
-        return Response.status(Response.Status.OK).entity(out).build();
-    }
 
+        return Response.status(Response.Status.OK)
+                .entity("{\"message\":\"Empleado eliminado correctamente\"}")
+                .build();
+    }
 }

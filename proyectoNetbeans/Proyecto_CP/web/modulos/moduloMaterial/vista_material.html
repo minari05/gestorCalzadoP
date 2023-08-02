@@ -16,7 +16,7 @@
         <div class="form-container">
             <div class="form-row">
                 <div class="form-group">
-                    <input type="text" id="txtNombreProducto" name="txtNombreProducto" required>
+                    <input type="text" id="txtNombreProducto" name="txtNombreProducto" oninput="this.value = this.value.toUpperCase()" required>
                     <label for="txtNombreProducto">Nombre de producto: </label>
                 </div>
                 <div class="form-group">
@@ -24,7 +24,7 @@
                     <label for="txtPrecioCompra">Precio de Compra:</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="txtTipo" name="txtTipo" required>
+                    <input type="text" id="txtTipo" name="txtTipo" oninput="this.value = this.value.toUpperCase()" required>
                     <label for="txtTipo">Tipo:</label>
                 </div>
             </div>
@@ -34,11 +34,11 @@
                     <label for="txtCantidad">Cantidad</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="txtDescripcion" name="txtDescripcion" required>
+                    <input type="text" id="txtDescripcion" name="txtDescripcion" oninput="this.value = this.value.toUpperCase()" required>
                     <label for="txtDescripcion">Descripción:</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="txtProveedor" name="txtProveedor" required>
+                    <input type="text" id="txtProveedor" name="txtProveedor" oninput="this.value = this.value.toUpperCase()" required>
                     <label for="txtProveedor">Proveedor:</label>
                 </div>
             </div>
@@ -48,18 +48,17 @@
                     <label for="txtUltimaFecha">Ultima Fecha de Compra:</label>
                 </div>
             </div>
-
-            <div class="button-row">
-                <div class="form-group">
-                    <div class="mat">
-                        <button type="submit" class="submit" onclick="moduloMaterial.guardarMat();"> Guardar </button>
-                        <button type="reset" class="clean" onclick="moduloMaterial.limpiar();"> Limpiar</button>
-                        <button type="button" class="delete" onclick="moduloMaterial.eliminar();"> Eliminar</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </form>
+    <div class="button-row">
+        <div class="form-group">
+            <div class="mat">
+                <button type="button" class="submit" onclick="moduloMaterial.guardarMat();"> Guardar </button>
+                <button type="reset" class="clean" onclick="moduloMaterial.limpiar();"> Limpiar</button>
+                <button type="button" class="delete" onclick="moduloMaterial.eliminar();"> Eliminar</button>
+            </div>
+        </div>
+    </div>
 
     <div>
 
@@ -67,11 +66,12 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Primer Apellido</th>
-                    <th>Segundo Apellido</th>
-                    <th>Puesto</th>
-                    <th>Departamento</th>
-                    <th>Prestaciones</th>
+                    <th>Precio de Compra</th>
+                    <th>Tipo</th>
+                    <th>Cantidad</th>
+                    <th>Descripción</th>
+                    <th>Proveedor</th>
+                    <th>Ultima Fecha de Compra</th>
                 </tr>
             </thead>
             <tbody id="tblProductos">

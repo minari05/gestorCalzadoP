@@ -5,7 +5,7 @@ package com.xyz.cp.modelo;
  *
  * @author ximer
  */
-public class Producto {
+public class Material {
 
     int idProducto;
     String nombre;
@@ -16,10 +16,10 @@ public class Producto {
     String proveedor;
     String ultimaFechaCompra;
 
-    public Producto() {
+    public Material() {
     }
 
-    public Producto(String nombre, double precioCompra, String tipo, int cantidad, String descripcion, String proveedor, String ultimaFechaCompra) {
+    public Material(String nombre, double precioCompra, String tipo, int cantidad, String descripcion, String proveedor, String ultimaFechaCompra) {
         this.nombre = nombre;
         this.precioCompra = precioCompra;
         this.tipo = tipo;
@@ -29,7 +29,7 @@ public class Producto {
         this.ultimaFechaCompra = ultimaFechaCompra;
     }
 
-    public Producto(int idProducto, String nombre, double precioCompra, String tipo, int cantidad, String descripcion, String proveedor, String ultimaFechaCompra) {
+    public Material(int idProducto, String nombre, double precioCompra, String tipo, int cantidad, String descripcion, String proveedor, String ultimaFechaCompra) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precioCompra = precioCompra;

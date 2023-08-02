@@ -1,110 +1,113 @@
 
 <!-- Modulo de Emp´leado -->
-<div class="container-fluid row d-flex justify-content-md-center" style="margin-top: 50px">
 <div class="title">Empleados</div>
-      <div class="line"></div>
+<div class="line"></div>
+<div class="container-fluid row d-flex justify-content-md-center" style="margin-top: 50px">
 
 
-        <div id="divDetalle" class="row">
+
+
         <form>
-          <div class="">
-                
-            <input  class="" type="text" id="txtIdEmpleado" style="display:none;" readonly>
-            <label for="txtIdEmpleado" style="display:none;"></label>
-          </div>
-          <div class="form-container">
-            <div class="form-row">
-              
-              <div class="form-group">
-                
-                <input type="text" id="txtNombre" required>
-                <label for="txtNombre">Nombre</label>
-              </div>
-              <div class="form-group">
-                <input type="text" id="txtPrimerApellido" required>
-                <label for="txtPrimerApellido">Primer Apellido</label>
-              </div>
-              <div class="form-group">
-                <input type="text" id="txtSegundoApellido" required>
-                <label for="txtSegundoApellido">Segundo Apellido</label>
-              </div>
+            <div class="">
+
+                <input  class="" type="text" id="txtIdEmpleado" style="display:none;" readonly>
+                <label for="txtIdEmpleado" style="display:none;"></label>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <input type="text" id="txtRFC"  required>
-                <label for="txtRFC">RFC</label>
-              </div>
-              <div class="form-group">
-                <input type="text" id="txtCURP"  required>
-                <label for="txtCURP">CURP</label>
-              </div>
-              <div class="form-group">
-                <input type="date" id="txtFechaInicioTrabajo" required>
-                <label for="txtFechaInicioTrabajo">Fecha de Inicio de Trabajo</label>
-              </div>
+            <div class="form-container">
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtNombre">Nombre</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtPrimerApellido" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtPrimerApellido">Primer Apellido</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtSegundoApellido" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtSegundoApellido">Segundo Apellido</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="txtRFC" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtRFC">RFC</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtCURP" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtCURP">CURP</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="txtFechaInicioTrabajo" required>
+                        <label for="txtFechaInicioTrabajo">Fecha de Inicio de Trabajo</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="number" id="txtNSS" required>
+                        <label for="txtNSS">NSS</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTipoSalario" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtTipoSalario">Salario</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtPuesto" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtPuesto">Puesto</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="txtDepartamento" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtDepartamento">Departamento</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtPrestaciones" oninput="this.value = this.value.toUpperCase()" required>
+                        <label for="txtPrestaciones">Prestaciones</label>
+                    </div>
+                    <div class="form-group">
+                        <select  id="txtGenero" required>
+                            <option value="" > --- </option>
+                            <option value="M" >Masculino</option>
+                            <option value="F">Femenino</option>
+                            <option value="O">Otro</option> 
+                        </select>
+                        <label class="mt-2">Género:</label>
+                    </div>
+                </div>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <input type="number" id="txtNSS"  required>
-                <label for="txtNSS">NSS</label>
-              </div>
-              <div class="form-group">
-                <input type="text" id="txtTipoSalario"  required>
-                <label for="txtTipoSalario">Salario</label>
-              </div>
-              <div class="form-group">
-                <input type="text" id="txtPuesto"  required>
-                <label for="txtPuesto">Puesto</label>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <input type="text" id="txtDepartamento"  required>
-                <label for="txtDepartamento">Departamento</label>
-              </div>
-              <div class="form-group">
-                <input type="text" id="txtPrestaciones"  required>
-                <label for="txtPrestaciones">Prestaciones</label>
-              </div>
+
+
+
+            <div class="button-row">
                 <div class="form-group">
-                    <select  id="txtGenero" required>
-                    <option value="" > --- </option>
-                    <option value="M" >Masculino</option>
-                    <option value="F">Femenino</option>
-                    <option value="O">Otro</option> 
-                </select>
-                <label class="mt-2">Género:</label>
+                    <button type="button" class="submit" onclick="moduloEmpleado.guardarEmp();" id="btnGuardar">Guardar</button>
+                    <button type="reset" class="clean" onclick="moduloEmpleado.limpiar();" id="btnLimpiar">Limpiar</button>
+                    <button type="button" class="delete" onclick="moduloEmpleado.eliminar();"  id="btnEliminar">Eliminar</button>
+                </div>
             </div>
-            </div>
-          </div>
-
-           
-
-          <div class="button-row">
-            <div class="form-group">
-                <button type="button" onclick="moduloEmpleado.guardarEmp();" id="btnGuardar">Enviar</button>
-              <button type="reset" class="clean" onclick="moduloEmpleado.limpiar();" id="btnLimpiar">Limpiar</button>
-              <button type="button" class="delete" onclick="moduloEmpleado.eliminar();"  id="btnEliminar">Eliminar</button>
-            </div>
-          </div>
         </form>
-      </div>
-        <div  id="divCatalogo" class="row">
-          <table id="tblEmpleado">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Puesto</th>
-                <th>Departamento</th>
-                <th>Prestaciones</th>
-              </tr>
-            </thead>
-            <tbody id="tblEmpleados">
-             
-            </tbody>
-          </table>
-        </div>
+    </div>
 
-      
+    <div  id="divCatalogo" class="row">
+        <table id="tblEmpleado">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Puesto</th>
+                    <th>Departamento</th>
+                    <th>Prestaciones</th>
+                </tr>
+            </thead>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar..." oninput="this.value = this.value.toUpperCase()">
+                <button class="buttonb" onclick="moduloEmpleado.buscar()">Buscar</button>
+            </div>
+            <tbody id="tblEmpleados">
+
+            </tbody>
+        </table>
+    </div>     
 </div>
